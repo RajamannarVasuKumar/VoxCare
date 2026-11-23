@@ -1,0 +1,2 @@
+# VoxCare - No extra libraries needed for basic version
+# Python built-in libraries only: json, time
