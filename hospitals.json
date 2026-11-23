@@ -1,0 +1,67 @@
+{
+  "hospitals": [
+    {
+      "id": 1,
+      "name": "City General Hospital",
+      "distance_km": 2.1,
+      "icu_beds": 5,
+      "ventilators": 3,
+      "ambulance_available": true,
+      "blood_bank": {
+        "O+": 4,
+        "O-": 2,
+        "A+": 5,
+        "B+": 3
+      },
+      "doctors": [
+        {"name": "Dr. Ramesh", "speciality": "General", "op_available": true, "token": 12},
+        {"name": "Dr. Priya", "speciality": "Cardiology", "op_available": true, "token": 5}
+      ],
+      "police_station": "Central Police Station",
+      "police_distance_km": 1.5
+    },
+    {
+      "id": 2,
+      "name": "Apollo Emergency Care",
+      "distance_km": 3.8,
+      "icu_beds": 0,
+      "ventilators": 0,
+      "ambulance_available": true,
+      "blood_bank": {
+        "O+": 0,
+        "O-": 1,
+        "A+": 2,
+        "B+": 0
+      },
+      "doctors": [
+        {"name": "Dr. Suresh", "speciality": "General", "op_available": false, "token": 0}
+      ],
+      "police_station": "North Police Station",
+      "police_distance_km": 2.2
+    },
+    {
+      "id": 3,
+      "name": "Sunshine Multi Speciality Hospital",
+      "distance_km": 5.2,
+      "icu_beds": 8,
+      "ventilators": 5,
+      "ambulance_available": true,
+      "blood_bank": {
+        "O+": 6,
+        "O-": 3,
+        "A+": 4,
+        "B+": 6
+      },
+      "doctors": [
+        {"name": "Dr. Anitha", "speciality": "General", "op_available": true, "token": 8},
+        {"name": "Dr. Kumar", "speciality": "Ortho", "op_available": true, "token": 3}
+      ],
+      "police_station": "South Police Station",
+      "police_distance_km": 3.0
+    }
+  ],
+  "family_contacts": [
+    {"name": "Father", "phone": "+91 90000 00001"},
+    {"name": "Mother", "phone": "+91 90000 00002"}
+  ]
+}
