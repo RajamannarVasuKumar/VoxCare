@@ -19,7 +19,7 @@ India-wide AI-powered voice web app. Works in any city in India. Real Voice + Re
 - Near Hospitals + Google Maps
 
 ## How to Run
-streamlit run app.py
+streamlit run main.py
 
 ## Future Work
 Twilio Real Auto Call / SMS after API Key + DLT Registration. Currently Free WhatsApp Real Alert is ready.
