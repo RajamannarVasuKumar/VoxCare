@@ -2,6 +2,9 @@
 
 India-wide AI-powered voice web app. Works in any city in India. Real Voice + Real GPS Location.
 
+### 🔴 Live Demo
+👉 [Click Here to Open VOXCARE AI Live](https://voxcare-ai-9wenxcfbdg7eqshbhb6dbm.streamlit.app/)
+
 ## Type 1 - Personal Health Assistant - Home Doctor / Friend in Phone
 - Any Language: English / Telugu / Hindi - Talk like a friend
 - Any Health Problem: Fever, Headache, Chest Pain, Sugar, BP, Cold - Solution + Medicine Info
