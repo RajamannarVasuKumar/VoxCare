@@ -1,58 +1,40 @@
 # VOXCARE AI - Emergency System & Personal Health Assistant
 
-India-wide AI-powered voice web app. Works in any city in India. Real Voice + Real GPS Location.
+India-wide AI-powered voice and text web application designed to work across cities and states in India with live GPS location links, hospital readiness details, and a friendly health assistant.
+
+> **Safety Note:** Official emergency helplines (**108** for ambulance, **100 / 112** for police/emergency) are always primary in real-world emergencies. VoxCare AI acts as a smart assistive coordination and communication layer.
 
 ## Problem
-During an accident, a person cannot speak properly or unlock their phone.
-It takes 5-10 minutes just to call an ambulance, which can be life-threatening.
+During a sudden road accident or medical emergency, a person may struggle to speak clearly, unlock their phone, or coordinate multiple contacts while every minute counts.
 
 ## Solution - VOXCARE AI
-VOXCARE AI sends alerts to Ambulance, Hospital, Police, and Family using only voice.
-It acts as a 3rd Person when no one is near.
+VOXCARE AI combines **Health Friend** guidance and **3rd-Person Emergency Coordination** in a zero-cost web interface:
+- Supports **Voice + Screen Text** so users can both speak and read clearly.
+- Works **India-wide** with preset Indian cities, custom city/town input, and optional live GPS coordinates (`lat`, `lon`).
+- Prepares instant Google Maps links and WhatsApp family alert links along with hospital ICU, blood bank (`O+`), bed, OP, and police station details.
 
-## Type 1 - Personal Health Assistant - Home Doctor / Friend in Phone
-- Any Language: English / Telugu / Hindi - Talk like a friend
-- Any Health Problem: Fever, Headache, Chest Pain, Sugar, BP, Cold - Solution + Medicine Info
-- Healthcare Tips, Medicine Reminder
-- Medical Certificate / Medical Report: How to get, How to send online
-- Near & Affordable Hospitals: OP Fee, Doctor Available, Beds, OP Booking from Home
-- Upload Medical Report
+## Mode 1 - Health Friend (Voice + Text)
+- **Friendly Conversation:** Ask health questions and receive both spoken browser voice-over and clear text on screen.
+- **Broad Health Topics:** Fever, headache, chest pain warning, blood sugar, BP, cold, general wellness, daily health tips, and medicine reminders.
+- **Practical Guidance:** Step-by-step guidance on medical certificates/reports, online sharing tips, OP booking, and report upload.
 
-## Type 2 - Emergency System - 3rd Person When No One Is Near
-- Accident Auto-Detection: App asks "Are You OK?" - No reply in 10 sec = Auto Alert
-- Real Voice: Speak HELP - Real Mic Input
-- Real Location: Live GPS Location + Ambulance Live Location
-- Auto Alert: Ambulance 108 + Near Police Station + 2 Family Members via WhatsApp (Free Real Alert)
-- Hospital Arrange: Beds, Blood Bank, Doctor Available, OP, ICU - Informed to Hospital
-- Near Hospitals + Google Maps
+## Mode 2 - 3rd-Person Emergency & Crash Guardian
+- **1-Click SOS:** Immediate emergency alert card with live GPS location link, hospital/ambulance/police map links, Medical ID summary, and WhatsApp family alert links.
+- **10-Second Crash / Consciousness Check:** Simulates a sudden crash/jerk with a 10-second `"Are you okay?"` check before triggering unconscious emergency mode.
+- **Voice Input & Keyword Check:** Record voice via mic or type emergency messages (`HELP`, `Accident`, etc.) with keyword detection.
+- **Ambulance Live Tracker (For Conscious Victim):** Shows dispatch status, estimated arrival time (ETA), and route progress bar.
 
-## 3 Layers
-1. Voice Mode: When the user says "HELP / Accident", it sends an alert to the nearest ICU hospital.
-2. Silent SOS: When the user cannot speak, pressing the SOS button sends an alert.
-3. Auto Crash Detection: If the phone detects a crash and there is no response within 10 seconds, it sends an auto SOS.
+## Project Files
+- `main.py` - Streamlit UI, voice-over synthesis, 10-second crash check, emergency alert view, and Health Friend interface
+- `voxcare.py` - Coordinate resolution, emergency alert builder, keyword checker, medicine reminders, and Gemini + rule-based health assistant
+- `hospitals.json` - India-wide hospital readiness data, ambulance ETA, Medical ID info, family contacts, health tips, and medicine notes
+- `test_voxcare.py` - Automated verification script (`python test_voxcare.py`)
+- `requirements.txt` - Python dependencies (`streamlit`, optional `google-genai`)
+- `Dockerfile` - Container configuration for Streamlit hosting (`port 8501`)
+- `README.md` - Project documentation
+- `DEMO.md` - Live walkthrough script
 
-## Features - Live Demo Example
-- Nearest Hospital: 2.1 KM - Guntur Government General Hospital
-- ICU Beds: 12, Beds Available: 25, Blood O+: 8
-- Police Station: Guntur Arundelpet PS - 1.2 KM
-- Ambulance: 108 - Arrives in 5 min - Live Tracking like Swiggy / Zomato
-- Doctor: Dr. Kumar - General - Available | OP: Open 9 AM - 1 PM | OP Fee: Rs.0
-- SMS / WhatsApp to Family with Live Location + ETA
-
-## Files
-- hospitals.json - 8 Hospitals, 7 Cities - Hospitals data
-- voxcare.py - All main functions
-- main.py - Main file to run
-- test_voxcare.py - 10 Tests Passed
-- requirements.txt - streamlit
-- README.md - Project details
-- DEMO.md - Demo Script
-
-## How to Run
+## How to Run Locally
+```bash
+pip install -r requirements.txt
 streamlit run main.py
-
-## Commands to Try
-HELP, Accident, SOS, Crash, Fever, Headache, Sugar, BP, O+ blood, OP booking, Medical Certificate
-
-## Future Work
-Twilio Real Auto Call / SMS after API Key + DLT Registration. Currently Free WhatsApp Real Alert is ready.
