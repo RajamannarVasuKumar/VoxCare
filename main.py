@@ -3,7 +3,7 @@ from voxcare import load_data, create_emergency_alert, health_assistant, medicin
 
 st.set_page_config(page_title="VOXCARE AI", page_icon="🚨", layout="centered")
 
-# --- 1. DESIGN - Hospital App la Clean Theme ---
+# --- 1. DESIGN - Hospital App Clean Theme ---
 st.markdown("""
 <style>
     .main { background-color: #FFF5F5; }
@@ -30,7 +30,7 @@ st.write("India Wide | Real Voice + Real GPS Location | Any Language | Your Frie
 
 data = load_data()
 
-language = st.selectbox("Select Language / Bhasha", ["English", "Telugu", "Hindi"])
+language = st.selectbox("Select Language", ["English", "Telugu", "Hindi"])
 city = st.selectbox("Select Your City in India", list(INDIA_CITIES.keys()))
 st.info("For Real GPS: Allow Location in Browser. For Real Voice: Use Mic below.")
 live_lat = st.number_input("Your Live Latitude (from Google Maps - optional)", value=0.0)
@@ -38,9 +38,9 @@ live_lon = st.number_input("Your Live Longitude (from Google Maps - optional)", 
 live_lat = live_lat if live_lat != 0.0 else None
 live_lon = live_lon if live_lon != 0.0 else None
 
-# --- 3. EMERGENCY FAST - 1 Click SOS Paina ne ---
+# --- 3. EMERGENCY FAST - 1 Click SOS ---
 st.markdown("---")
-st.markdown("### 🆘 EMERGENCY AYITHE IKkada Nokku - 1 Click")
+st.markdown("### 🆘 EMERGENCY? PRESS HERE - 1 Click")
 if st.button("🆘 SOS - I AM IN EMERGENCY - HELP", type="primary"):
     alert = create_emergency_alert(data, "SOS Button - 1 Click Emergency", city, live_lat, live_lon)
     st.error(f"ALERT SENT! Nearest: {alert['nearest_hospital']} - {alert['distance']} KM")
