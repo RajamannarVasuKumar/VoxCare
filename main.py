@@ -1,8 +1,31 @@
 import streamlit as st
 from voxcare import load_data, create_emergency_alert, health_assistant, medicine_reminder, INDIA_CITIES
 
-st.set_page_config(page_title="VOXCARE AI", page_icon="🚨")
-st.title("VOXCARE AI - Emergency System & Personal Health Assistant")
+st.set_page_config(page_title="VOXCARE AI", page_icon="🚨", layout="centered")
+
+# --- 1. DESIGN - Hospital App la Clean Theme ---
+st.markdown("""
+<style>
+    .main { background-color: #FFF5F5; }
+    div.stButton > button {
+        width: 100%;
+        border-radius: 12px;
+        height: 55px;
+        font-size: 18px !important;
+        font-weight: bold;
+    }
+    div[data-testid="stButton"] button[kind="primary"] {
+        background-color: #FF0000 !important;
+        color: white !important;
+        height: 75px !important;
+        font-size: 24px !important;
+        border: 3px solid #990000;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("<h1 style='text-align: center; color: #D32F2F;'>🚨 VOXCARE AI</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 18px;'>Emergency System & Personal Health Assistant</p>", unsafe_allow_html=True)
 st.write("India Wide | Real Voice + Real GPS Location | Any Language | Your Friend + 3rd Person in Emergency")
 
 data = load_data()
@@ -14,6 +37,27 @@ live_lat = st.number_input("Your Live Latitude (from Google Maps - optional)", v
 live_lon = st.number_input("Your Live Longitude (from Google Maps - optional)", value=0.0)
 live_lat = live_lat if live_lat != 0.0 else None
 live_lon = live_lon if live_lon != 0.0 else None
+
+# --- 3. EMERGENCY FAST - 1 Click SOS Paina ne ---
+st.markdown("---")
+st.markdown("### 🆘 EMERGENCY AYITHE IKkada Nokku - 1 Click")
+if st.button("🆘 SOS - I AM IN EMERGENCY - HELP", type="primary"):
+    alert = create_emergency_alert(data, "SOS Button - 1 Click Emergency", city, live_lat, live_lon)
+    st.error(f"ALERT SENT! Nearest: {alert['nearest_hospital']} - {alert['distance']} KM")
+    st.write(f"Your Live Location: {alert['live_location_link']}")
+    st.write(f"Accident Location: {alert['accident_location']}")
+    st.write(f"Ambulance: {alert['ambulance_status']} | Beds Available: {alert['beds_available']}")
+    st.write(f"Doctor Available: {alert['doctor_available']} | OP: {alert['op_available']}")
+    st.write(f"Near Police Station: {alert['police_station']}")
+    st.write(f"ICU: {alert['icu_hospital']} | Blood O+: {alert['blood_hospital']}")
+    st.link_button("🏥 Hospital Maps", alert['maps_link'])
+    st.link_button("🚑 Ambulance Live Location", alert['ambulance_link'])
+    st.write("Auto Alert to 2 Family Members (WhatsApp - Free Real Alert):")
+    for f in alert['family_links']:
+        st.link_button(f"WhatsApp to {f['name']} - {f['phone']}", f['link'])
+    st.warning("Future: Twilio Real Auto Call / SMS to Ambulance + Police + Family - After DLT Registration")
+
+st.markdown("---")
 
 tab1, tab2 = st.tabs(["Emergency - 3rd Person", "Personal Health Assistant - Home Doctor"])
 
