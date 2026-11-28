@@ -1,28 +1,49 @@
-# VOXCARE AI - Emergency System & Personal Health Assistant
+# VOXCARE AI — India-Wide Emergency Guardian & Voice Health Friend
 
-India-wide AI-powered voice web app. Works in any city in India. Real Voice + Real GPS Location.
+**VOXCARE AI** is a zero-cost, India-wide web application built with **Streamlit** that pairs a conversational **Health Friend** (voice + screen text) with a **3rd-Person Emergency & Crash Guardian** supporting live GPS links, hospital readiness details, and instant family alert dispatch across Indian cities.
 
-### 🔴 Live Demo
-👉 [Click Here to Open VOXCARE AI Live](https://voxcare-ai-9wenxcfbdg7eqshbhb6dbm.streamlit.app/)
+> **Safety Notice:** Official emergency helplines (**108** for ambulance, **100 / 112** for police and emergency response) are always primary in real-world emergencies. VOXCARE AI serves as an assistive coordination and communication layer.
 
-## Type 1 - Personal Health Assistant - Home Doctor / Friend in Phone
-- Any Language: English / Telugu / Hindi - Talk like a friend
-- Any Health Problem: Fever, Headache, Chest Pain, Sugar, BP, Cold - Solution + Medicine Info
-- Healthcare Tips, Medicine Reminder
-- Medical Certificate / Medical Report: How to get, How to send online
-- Near & Affordable Hospitals: OP Fee, Doctor Available, Beds, OP Booking from Home
-- Upload Medical Report
+### Live Demo
+- **Web App:** [Open VOXCARE AI Live](https://voxcare-ai-9wenxcfbdg7eqshbhb6dbm.streamlit.app/)
 
-## Type 2 - Emergency System - 3rd Person When No One Is Near
-- Accident Auto-Detection: App asks "Are You OK?" - No reply in 10 sec = Auto Alert
-- Real Voice: Speak HELP - Real Mic Input
-- Real Location: Live GPS Location + Ambulance Live Location
-- Auto Alert: Ambulance 108 + Near Police Station + 2 Family Members via WhatsApp (Free Real Alert)
-- Hospital Arrange: Beds, Blood Bank, Doctor Available, OP, ICU - Informed to Hospital
-- Near Hospitals + Google Maps
+---
 
-## How to Run
+## Core Capabilities
+
+### 1. Health Friend (Voice + Screen Text)
+- **Dual-Channel Output:** Delivers clear screen text alongside browser speech synthesis (`window.speechSynthesis`) for hands-free listening.
+- **Everyday Health Guidance:** Covers common concerns (fever, headache, chest pain warning signs, blood sugar, BP, cold), general wellness tips, and medicine reminders.
+- **Practical Workflows:** Guides users on obtaining and sharing medical certificates/reports, booking outpatient (OP) appointments, and reviewing uploaded reports.
+- **Resilient AI Architecture:** Uses Google Gemini (`gemini-2.5-flash` via `google-genai`) when `GEMINI_API_KEY` is configured, with an automatic rule-based fallback so core guidance remains available without interruption.
+
+### 2. 3rd-Person Emergency & Crash Guardian
+- **1-Click SOS:** Immediately generates a live GPS Google Maps link (`https://www.google.com/maps?q=...`), hospital/ambulance/police map searches, Medical ID summary, and pre-filled WhatsApp alert links for family contacts.
+- **10-Second Crash / Consciousness Check:** Simulates a sudden vehicle impact/jerk with a 10-second `"Are you okay?"` response window before escalating to unconscious emergency mode.
+- **Voice Input & Keyword Detection:** Supports microphone audio capture, text input, and emergency keyword detection (`HELP`, `Accident`, `SOS`, etc.).
+- **Ambulance Live Tracker (Conscious Victim View):** Displays dispatch status, estimated arrival time (ETA), and route progress.
+- **India-Wide Coverage:** Works with preset Indian cities, custom city/town entry across India, and optional live latitude/longitude coordinates.
+
+---
+
+## Repository Structure
+
+| File | Responsibility |
+| :--- | :--- |
+| `main.py` | Streamlit interface, voice synthesis, 10s crash check, emergency dispatch card, and Health Friend UI |
+| `voxcare.py` | Coordinate resolution, emergency alert builder, voice keyword check, medicine reminders, and Gemini + fallback assistant |
+| `hospitals.json` | India-wide hospital readiness records (ICU, O+ blood bank, beds, OP status/fee), ambulance ETA, Medical ID, contacts, tips, and medicines |
+| `test_voxcare.py` | Automated test suite verifying data integrity, city isolation, GPS coordinates, voice keywords, and health responses |
+| `requirements.txt` | Python dependencies (`streamlit`, `google-genai`) |
+| `Dockerfile` | Container build and healthcheck setup on port `8501` |
+| `README.md` | Project overview, architecture, and setup guide |
+| `DEMO.md` | Live walkthrough and hackathon/FDE demonstration guide |
+
+---
+
+## Quick Start
+
+### Run Locally
+```bash
+pip install -r requirements.txt
 streamlit run main.py
-
-## Future Work
-Twilio Real Auto Call / SMS after API Key + DLT Registration. Currently Free WhatsApp Real Alert is ready.
